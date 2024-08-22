@@ -42,8 +42,8 @@ export const updateMovieThunk = createAsyncThunk(
   "update/movie",
   async (movie, thunkApi) => {
     try {
-      console.log("movie", movie);
       const { data } = await moviesApi.put(`/${movie.id}`, movie.data);
+      thunkApi.dispatch(getMoviesThunk());
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -56,7 +56,7 @@ export const deletedMovieThunk = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const { data } = await moviesApi.delete(`/${id}`);
-      await moviesApi.get();
+      thunkApi.dispatch(getMoviesThunk());
       return data.id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

@@ -7,8 +7,8 @@ const SearchBar = () => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(setFilter(data));
+    reset();
   };
   return (
     <form

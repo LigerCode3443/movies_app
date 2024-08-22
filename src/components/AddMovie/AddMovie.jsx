@@ -3,9 +3,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addMovieThunk } from "../../redux/movies/operations";
+import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
 const AddMovie = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit, reset, control } = useForm();
   const onSubmit = (data) => {
     const formData = new FormData();
@@ -15,11 +18,13 @@ const AddMovie = () => {
     formData.append("genres", data.genres);
     formData.append("rating", data.rating);
     formData.append("director", data.director);
-    formData.append("release_date", data.release_date);
+    formData.append("release_date", format(data.release_date, " dd-MM-yyyy"));
     formData.append("actors", data.actors);
 
     dispatch(addMovieThunk(formData));
+
     reset();
+    navigate("/movies");
   };
   return (
     <div className="flex flex-col justify-center items-center">
@@ -96,7 +101,7 @@ const AddMovie = () => {
             <span className="label-text">Release date</span>
           </div>
           <Controller
-            name="date"
+            name="release_date"
             control={control}
             render={({ field }) => (
               <DatePicker

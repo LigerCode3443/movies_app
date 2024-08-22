@@ -8,14 +8,15 @@ const ListMovies = () => {
   const movies = useSelector(selectMovies);
   const filterMovie = useSelector(selectFilteredMemo);
 
-  console.log(filterMovie);
   return (
     <>
       <SearchBar />
       <ul className="flex flex-wrap gap-5 mt-5 justify-center">
-        {movies.map((movie) => (
-          <MovieCard key={movie._id} movie={movie} />
-        ))}
+        {filterMovie.length
+          ? filterMovie.map((movie) => (
+              <MovieCard key={movie._id} movie={movie} />
+            ))
+          : movies.map((movie) => <MovieCard key={movie._id} movie={movie} />)}
       </ul>
     </>
   );

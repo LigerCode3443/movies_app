@@ -45,7 +45,6 @@ const MovieCard = ({ movie }) => {
             <button
               className="btn btn-primary"
               onClick={() => {
-                console.log(modalIsOpen);
                 handleModalOpen();
               }}
             >

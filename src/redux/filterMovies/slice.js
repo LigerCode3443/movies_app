@@ -9,7 +9,7 @@ const slice = createSlice({
   initialState,
   reducers: {
     setFilter(state, action) {
-      state.filterCars = action.payload;
+      state.filterMovie = action.payload;
     },
   },
 });

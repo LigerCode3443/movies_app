@@ -6,6 +6,7 @@ import { updateMovieThunk } from "../../redux/movies/operations";
 
 import ModalWindow from "../ModalWindow/ModalWindow";
 import { useEffect } from "react";
+import { format } from "date-fns";
 
 const EditMovie = ({ movie, modalIsOpen, handleIsOpen, handleModalClose }) => {
   const dispatch = useDispatch();
@@ -34,9 +35,8 @@ const EditMovie = ({ movie, modalIsOpen, handleIsOpen, handleModalClose }) => {
     formData.append("genres", data.genres);
     formData.append("rating", data.rating);
     formData.append("director", data.director);
-    formData.append("release_date", data.release_date);
+    formData.append("release_date", format(data.release_date, " dd-MM-yyyy"));
     formData.append("actors", data.actors);
-    s;
 
     dispatch(updateMovieThunk({ id: data._id, data: movie }));
     handleModalClose();
