@@ -49,7 +49,7 @@ export const selectFilteredMemo = createSelector(
   [selectMovies, selectFilter],
   (movies, value) => {
     return movies.filter((movie) => {
-      return movie?.title.toLowerCase() === value?.value?.toLowerCase();
+      return movie?.title.toLowerCase().includes(value?.toLowerCase());
     });
   }
 );
