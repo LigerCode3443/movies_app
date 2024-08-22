@@ -8,10 +8,10 @@ import ModalWindow from "../ModalWindow/ModalWindow";
 import { useEffect } from "react";
 import { format } from "date-fns";
 
-const EditMovie = ({ movie, modalIsOpen, handleIsOpen, handleModalClose }) => {
+const EditMovie = ({ movie, modalIsOpen, handleModalClose }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset, control } = useForm({
-    defaultValues: movie,
+    defaultValues: { ...movie, release_date: new Date(movie.release_date) },
   });
 
   useEffect(() => {
@@ -25,18 +25,18 @@ const EditMovie = ({ movie, modalIsOpen, handleIsOpen, handleModalClose }) => {
       rating: data.rating,
       director: data.director,
       poster: data.poster,
-      release_date: data.release_date,
+      release_date: format(data.release_date, " dd-MM-yyyy"),
       actors: data.actors,
     };
-    const formData = new FormData();
-    formData.append("poster", data.poster[0]);
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("genres", data.genres);
-    formData.append("rating", data.rating);
-    formData.append("director", data.director);
-    formData.append("release_date", format(data.release_date, " dd-MM-yyyy"));
-    formData.append("actors", data.actors);
+    // const formData = new FormData();
+    // formData.append("poster", data.poster[0]);
+    // formData.append("title", data.title);
+    // formData.append("description", data.description);
+    // formData.append("genres", data.genres);
+    // formData.append("rating", data.rating);
+    // formData.append("director", data.director);
+    // formData.append("release_date", format(data.release_date, " dd-MM-yyyy"));
+    // formData.append("actors", data.actors);
 
     dispatch(updateMovieThunk({ id: data._id, data: movie }));
     handleModalClose();
