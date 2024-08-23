@@ -5,8 +5,12 @@ const MovieDetails = () => {
   const movie = useSelector(selectOneMovie);
 
   return (
-    <div className="mt-5 flex gap-5">
-      <img src={movie.poster} alt={movie.title} className="w-1/2 rounded-xl" />
+    <div className="mt-5 xs:flex gap-5 xs:flex-col md:flex-row">
+      <img
+        src={movie.poster}
+        alt={movie.title}
+        className="md:w-1/2 xs:w-auto rounded-xl"
+      />
       <div className="text-xl flex flex-col gap-[10px]">
         <h2 className="font-bold">{movie.title}</h2>
         <p>Rating: {movie.rating}</p>

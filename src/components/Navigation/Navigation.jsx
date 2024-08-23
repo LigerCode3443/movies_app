@@ -13,9 +13,9 @@ const Navigation = () => {
   const favorite = movies.filter((movie) => movie.favorite === true).length;
 
   return (
-    <header className="px-10 py-5 bg-blue-500">
+    <header className="md:px-10 md:py-5 bg-blue-500 xs:px-4 xs:py-3">
       <nav>
-        <ul className="flex justify-end gap-5 text-2xl font-semibold">
+        <ul className="flex md:justify-end gap-5 lg:text-2xl md:font-semibold md:text-lg  xs:text-base xs:gap-2 xs:justify-between">
           <li className="text-black">
             {favorite !== 0 ? (
               <p>

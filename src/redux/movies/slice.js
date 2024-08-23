@@ -39,7 +39,7 @@ const slice = createSlice({
         );
       })
       .addCase(updateMovieFavorite.fulfilled, (state, action) => {
-        state.movie = state.movie?.filter((movie) =>
+        state.movies = state.movies?.filter((movie) =>
           movie._id === action.payload.id
             ? movie.favorite === !movie.favorite
             : movie

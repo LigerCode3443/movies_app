@@ -15,7 +15,7 @@ function App() {
     dispatch(getMoviesThunk());
   }, [dispatch]);
   return (
-    <div className="w-[1280px] px-5 mx-[auto] my-0">
+    <div className="lg:w-[1280px] px-5 mx-[auto] my-0 xs:w-[375px] md:w-[768px]">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<ListMovies />} />

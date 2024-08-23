@@ -29,7 +29,7 @@ const MovieCard = ({ movie }) => {
   };
   return (
     <>
-      <li className="card bg-base-100 w-96 shadow-xl relative">
+      <li className="card bg-base-100 lg:w-96 xs:w-96 shadow-xl relative md:w-80">
         <figure>
           <img src={movie.poster} alt="Shoes" />
           <button
