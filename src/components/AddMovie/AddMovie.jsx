@@ -24,7 +24,7 @@ const AddMovie = () => {
     dispatch(addMovieThunk(formData));
 
     reset();
-    navigate("/movies");
+    navigate("/");
   };
   return (
     <div className="flex flex-col justify-center items-center">

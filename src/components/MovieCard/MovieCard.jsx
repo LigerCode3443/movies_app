@@ -2,10 +2,12 @@ import { useDispatch } from "react-redux";
 import {
   deletedMovieThunk,
   getMovieByIdThunk,
+  updateMovieFavorite,
 } from "../../redux/movies/operations";
 import { NavLink } from "react-router-dom";
 import EditMovie from "../EditMovie/EditMovie";
 import { useState } from "react";
+import SvgHard from "../SvgHard/SvgHard";
 
 const MovieCard = ({ movie }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -21,11 +23,27 @@ const MovieCard = ({ movie }) => {
   const handleDelete = (id) => {
     dispatch(deletedMovieThunk(id));
   };
+
+  const handleToggle = (id, favorite) => {
+    dispatch(updateMovieFavorite({ id, favorite: { favorite: !favorite } }));
+  };
   return (
     <>
-      <li className="card bg-base-100 w-96 shadow-xl">
+      <li className="card bg-base-100 w-96 shadow-xl relative">
         <figure>
           <img src={movie.poster} alt="Shoes" />
+          <button
+            className="absolute top-4 right-4"
+            onClick={() => {
+              handleToggle(movie._id, movie.favorite);
+            }}
+          >
+            {movie.favorite ? (
+              <SvgHard color={"#3470FF"} colorFill={"#3470FF"} />
+            ) : (
+              <SvgHard color={"grey"} />
+            )}
+          </button>
         </figure>
         <div className="card-body">
           <h2 className="card-title">{movie.title}</h2>

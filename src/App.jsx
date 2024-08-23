@@ -18,10 +18,10 @@ function App() {
     <div className="w-[1280px] px-5 mx-[auto] my-0">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<ListMovies />} />
+          <Route path="/" element={<ListMovies />} />
+          <Route path="add/movie" element={<Home />} />
           <Route path="/:id" element={<MovieDetails />} />
-          <Route path="*" element={<Navigate to={<Home />} />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </div>

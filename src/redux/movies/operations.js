@@ -63,3 +63,19 @@ export const deletedMovieThunk = createAsyncThunk(
     }
   }
 );
+
+export const updateMovieFavorite = createAsyncThunk(
+  "update/favorite",
+  async (movie, thunkApi) => {
+    try {
+      const { data } = await moviesApi.patch(
+        `/${movie.id}/favorite`,
+        movie.favorite
+      );
+      thunkApi.dispatch(getMoviesThunk());
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

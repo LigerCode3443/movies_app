@@ -4,6 +4,7 @@ import {
   deletedMovieThunk,
   getMovieByIdThunk,
   getMoviesThunk,
+  updateMovieFavorite,
   updateMovieThunk,
 } from "./operations";
 import { selectMovies } from "./selectors";
@@ -34,6 +35,13 @@ const slice = createSlice({
         state.movies = state.movies.map((movie) =>
           movie._id === action.payload._id
             ? { ...movie, ...action.payload }
+            : movie
+        );
+      })
+      .addCase(updateMovieFavorite.fulfilled, (state, action) => {
+        state.movie = state.movie?.filter((movie) =>
+          movie._id === action.payload.id
+            ? movie.favorite === !movie.favorite
             : movie
         );
       })
