@@ -25,7 +25,7 @@ const EditMovie = ({ movie, modalIsOpen, handleModalClose }) => {
       rating: data.rating,
       director: data.director,
       poster: data.poster,
-      release_date: format(data.release_date, " dd-MM-yyyy"),
+      release_date: format(data.release_date, "dd-MM-yyyy"),
       actors: data.actors,
     };
     // const formData = new FormData();

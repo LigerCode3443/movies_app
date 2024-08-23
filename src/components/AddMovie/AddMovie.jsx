@@ -18,7 +18,7 @@ const AddMovie = () => {
     formData.append("genres", data.genres);
     formData.append("rating", data.rating);
     formData.append("director", data.director);
-    formData.append("release_date", format(data.release_date, " dd-MM-yyyy"));
+    formData.append("release_date", format(data.release_date, "dd-MM-yyyy"));
     formData.append("actors", data.actors);
 
     dispatch(addMovieThunk(formData));

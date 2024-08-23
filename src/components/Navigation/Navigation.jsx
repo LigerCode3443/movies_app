@@ -11,7 +11,7 @@ const Navigation = () => {
   const movies = useSelector(selectMovies);
 
   const favorite = movies.filter((movie) => movie.favorite === true).length;
-  console.log(favorite);
+
   return (
     <header className="px-10 py-5 bg-blue-500">
       <nav>
